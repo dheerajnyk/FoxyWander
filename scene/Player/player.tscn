@@ -1,0 +1,237 @@
+[gd_scene load_steps=30 format=3 uid="uid://co1njq46con5c"]
+
+[ext_resource type="Texture2D" uid="uid://r7g0k4vdp5w1" path="res://assets/player/player.png" id="1_q6j5k"]
+[ext_resource type="Script" uid="uid://nsyqroqhhv4p" path="res://scene/Player/player.gd" id="1_t7jw7"]
+[ext_resource type="PackedScene" uid="uid://cxqhru8nr8by1" path="res://scene/Camera/player_cam.tscn" id="3_c0bux"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7jw7"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="Animation" id="Animation_wbm5k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fra3v"]
+resource_name = "fall"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+
+[sub_resource type="Animation" id="Animation_dpmh7"]
+resource_name = "hurt"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_c0bux"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [13, 14, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_7fv2l"]
+resource_name = "jump"
+length = 0.1
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+
+[sub_resource type="Animation" id="Animation_fd65k"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fd65k"]
+_data = {
+&"RESET": SubResource("Animation_wbm5k"),
+&"fall": SubResource("Animation_fra3v"),
+&"hurt": SubResource("Animation_dpmh7"),
+&"idle": SubResource("Animation_c0bux"),
+&"jump": SubResource("Animation_7fv2l"),
+&"run": SubResource("Animation_fd65k")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c0bux"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wbm5k"]
+animation = &"hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fra3v"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8uvvx"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_41w3l"]
+advance_mode = 2
+advance_expression = "velocity.y > 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fd65k"]
+advance_mode = 2
+advance_expression = "velocity.y <= 0"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_co0lx"]
+states/Start/position = Vector2(167, 72)
+states/fall/node = SubResource("AnimationNodeAnimation_c0bux")
+states/fall/position = Vector2(416, 72)
+states/hurt/node = SubResource("AnimationNodeAnimation_wbm5k")
+states/hurt/position = Vector2(563, 178)
+states/jump/node = SubResource("AnimationNodeAnimation_fra3v")
+states/jump/position = Vector2(296, 72)
+transitions = ["Start", "jump", SubResource("AnimationNodeStateMachineTransition_8uvvx"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_41w3l"), "fall", "jump", SubResource("AnimationNodeStateMachineTransition_fd65k")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fd65k"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7fv2l"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fra3v"]
+advance_mode = 2
+advance_expression = "is_equal_approx(velocity.x,0.0) == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dpmh7"]
+advance_mode = 2
+advance_expression = "is_equal_approx(velocity.x,0.0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wbm5k"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8uvvx"]
+states/Start/position = Vector2(158, 170)
+states/idle/node = SubResource("AnimationNodeAnimation_fd65k")
+states/idle/position = Vector2(307, 170)
+states/run/node = SubResource("AnimationNodeAnimation_7fv2l")
+states/run/position = Vector2(444, 170)
+transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_fra3v"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_dpmh7"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_wbm5k")]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c0bux"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7fv2l"]
+advance_mode = 2
+advance_expression = "!is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_co0lx"]
+advance_mode = 2
+advance_expression = "is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_c0bux"]
+states/AirState/node = SubResource("AnimationNodeStateMachine_co0lx")
+states/AirState/position = Vector2(419.46692, 224)
+states/End/position = Vector2(680, 100)
+states/GroundedState/node = SubResource("AnimationNodeStateMachine_8uvvx")
+states/GroundedState/position = Vector2(419.46692, 100)
+states/Start/position = Vector2(199, 100)
+transitions = ["Start", "GroundedState", SubResource("AnimationNodeStateMachineTransition_c0bux"), "GroundedState", "AirState", SubResource("AnimationNodeStateMachineTransition_7fv2l"), "AirState", "GroundedState", SubResource("AnimationNodeStateMachineTransition_co0lx")]
+graph_offset = Vector2(51.46692, 25)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c0bux"]
+font_size = 40
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_t7jw7")
+felloff_y = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q6j5k")
+hframes = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_t7jw7")
+
+[node name="PlayerCam" parent="." instance=ExtResource("3_c0bux")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fd65k")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_c0bux")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -18.0
+offset_top = -66.0
+offset_right = 96.0
+offset_bottom = 105.0
+scale = Vector2(0.3, 0.3)
+text = "00000
+00000
+00000"
+label_settings = SubResource("LabelSettings_c0bux")
