@@ -203,7 +203,6 @@ font_size = 40
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_t7jw7")
-felloff_y = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_q6j5k")

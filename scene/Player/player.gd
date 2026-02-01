@@ -10,6 +10,8 @@ const MAXFALL :float = 350.0
 const PLAYER = preload("uid://co1njq46con5c")
 const LEVEL_BASE = preload("uid://depgaj4slkg3v")
 
+func _enter_tree() -> void:
+	add_to_group(Constants.PLAYER_GROUP)
 
 func _physics_process(delta: float) -> void:
 	## Add the gravity.
@@ -36,6 +38,7 @@ func _physics_process(delta: float) -> void:
 	updatedebuglabel()
 	if global_position.y > felloff_y:
 		queue_free()
+		queue_redraw()
 
 
 
