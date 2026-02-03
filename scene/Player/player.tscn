@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://co1njq46con5c"]
+[gd_scene load_steps=32 format=3 uid="uid://co1njq46con5c"]
 
 [ext_resource type="Texture2D" uid="uid://r7g0k4vdp5w1" path="res://assets/player/player.png" id="1_q6j5k"]
 [ext_resource type="Script" uid="uid://nsyqroqhhv4p" path="res://scene/Player/player.gd" id="1_t7jw7"]
 [ext_resource type="PackedScene" uid="uid://cxqhru8nr8by1" path="res://scene/Camera/player_cam.tscn" id="3_c0bux"]
+[ext_resource type="PackedScene" uid="uid://dlksar768s8s0" path="res://scene/Shooter/shooter.tscn" id="4_wbm5k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7jw7"]
 radius = 6.0
@@ -200,6 +201,9 @@ graph_offset = Vector2(51.46692, 25)
 [sub_resource type="LabelSettings" id="LabelSettings_c0bux"]
 font_size = 40
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0bux"]
+radius = 7.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_t7jw7")
@@ -234,3 +238,14 @@ text = "00000
 00000
 00000"
 label_settings = SubResource("LabelSettings_c0bux")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_c0bux")
+
+[node name="Shooter" parent="." instance=ExtResource("4_wbm5k")]
+shootdelay = 0.7

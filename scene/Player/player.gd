@@ -9,9 +9,15 @@ const GRAVITY :float = 690
 const MAXFALL :float = 350.0 
 const PLAYER = preload("uid://co1njq46con5c")
 const LEVEL_BASE = preload("uid://depgaj4slkg3v")
+@onready var shooter: Node2D = $Shooter
 
 func _enter_tree() -> void:
 	add_to_group(Constants.PLAYER_GROUP)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_pressed("shoot")==true:
+		var dir = Vector2.LEFT if sprite_2d.flip_h else Vector2.RIGHT
+		shooter.shoot(dir)
 
 func _physics_process(delta: float) -> void:
 	## Add the gravity.

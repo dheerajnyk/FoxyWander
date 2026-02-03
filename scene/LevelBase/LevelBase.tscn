@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=4 uid="uid://depgaj4slkg3v"]
+[gd_scene load_steps=11 format=4 uid="uid://depgaj4slkg3v"]
 
+[ext_resource type="Script" uid="uid://qb50gr1cr2pj" path="res://scene/LevelBase/level_base.gd" id="1_2jxqq"]
 [ext_resource type="Texture2D" uid="uid://cgkkjlcgt6402" path="res://assets/tiles/Terrain (16x16).png" id="1_m7mwp"]
 [ext_resource type="PackedScene" uid="uid://co1njq46con5c" path="res://scene/Player/player.tscn" id="2_85sve"]
 [ext_resource type="PackedScene" uid="uid://6ejq8dl8ngnf" path="res://scene/Snail/snail.tscn" id="3_hw51y"]
-[ext_resource type="PackedScene" uid="uid://ckeoqpwp3e8e8" path="res://scene/Frog/frog.tscn" id="4_tcl6c"]
+[ext_resource type="PackedScene" uid="uid://ckeoqpwp3e8e8" path="res://scene/Frog/Frog.tscn" id="4_tcl6c"]
+[ext_resource type="PackedScene" uid="uid://lxvvlen114vj" path="res://scene/Eagle/eagle.tscn" id="5_isuph"]
+[ext_resource type="PackedScene" uid="uid://ckgi21s02d1cb" path="res://scene/LifeTimer/life_timer.tscn" id="7_eswdw"]
+[ext_resource type="PackedScene" uid="uid://brug4jm00tccc" path="res://scene/ObjectMaker/object_maker.tscn" id="8_a4ygo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85sve"]
 resource_name = "Platforms"
@@ -256,6 +260,7 @@ terrain_set_0/terrain_0/color = Color(4.813075e-07, 0.44630015, 0.43329194, 1)
 sources/0 = SubResource("TileSetAtlasSource_85sve")
 
 [node name="LevelBase" type="Node2D"]
+script = ExtResource("1_2jxqq")
 
 [node name="Platforms" type="TileMapLayer" parent="."]
 position = Vector2(0, -769)
@@ -263,10 +268,18 @@ tile_map_data = PackedByteArray("AAAAAC8AAAAGAAAAAAABAC8AAAAHAAAAAAACAC8AAAAGAAA
 tile_set = SubResource("TileSet_hw51y")
 
 [node name="Player" parent="." instance=ExtResource("2_85sve")]
-position = Vector2(19, -68)
+position = Vector2(312, -136)
 
 [node name="Snail" parent="." instance=ExtResource("3_hw51y")]
 position = Vector2(309, -25)
 
 [node name="Frog" parent="." instance=ExtResource("4_tcl6c")]
+visible = false
 position = Vector2(151, -107)
+
+[node name="Eagle" parent="." instance=ExtResource("5_isuph")]
+position = Vector2(522, -296)
+
+[node name="LifeTimer" parent="." instance=ExtResource("7_eswdw")]
+
+[node name="ObjectMaker" parent="." instance=ExtResource("8_a4ygo")]

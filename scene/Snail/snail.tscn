@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://6ejq8dl8ngnf"]
+[gd_scene load_steps=17 format=3 uid="uid://6ejq8dl8ngnf"]
 
 [ext_resource type="Script" uid="uid://dq0v81r83b1u" path="res://scene/Snail/snail.gd" id="2_b8eha"]
 [ext_resource type="Texture2D" uid="uid://djeqwjlmnsoy0" path="res://assets/enemies/snail/snail.png" id="2_naygd"]
+[ext_resource type="PackedScene" uid="uid://dlksar768s8s0" path="res://scene/Shooter/shooter.tscn" id="3_b8eha"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_naygd"]
 radius = 9.0
@@ -114,6 +115,8 @@ shape = SubResource("RectangleShape2D_naygd")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-18, 0)
 target_position = Vector2(0, 30)
+
+[node name="Shooter" parent="." instance=ExtResource("3_b8eha")]
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

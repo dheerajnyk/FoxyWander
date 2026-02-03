@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name EnemyBase
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var speed = 30
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 const FALL_OF_Y:int = 200
 const _gravity:float =  800

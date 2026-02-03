@@ -80,7 +80,7 @@ script = ExtResource("1_ifsse")
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_naygd")
 
-[node name="animatedFrog" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_f6u5y")
 animation = &"FrogIdle"
