@@ -2,6 +2,7 @@ extends Area2D
 
 @export var points:int =2
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,5 +20,12 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	hide()
+	set_deferred("monitoring",false)
+	audio_stream_player_2d.play()
+	pass # Replace with function body.
+
+
+func _on_audio_stream_player_2d_finished() -> void:
 	queue_free()
 	pass # Replace with function body.

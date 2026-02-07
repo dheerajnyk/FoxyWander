@@ -25,6 +25,7 @@ func shoot(direction:Vector2)->void:
 	canshoot = false
 	SIGNALHUB.oncreateBullet(global_position,direction,speed,bulle_key)
 	shoot_timer.start()
+	sound.play()
 
 func _on_shoot_timer_timeout() -> void:
 	canshoot = true

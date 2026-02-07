@@ -10,6 +10,7 @@ const MAXFALL :float = 350.0
 const PLAYER = preload("uid://co1njq46con5c")
 const LEVEL_BASE = preload("uid://depgaj4slkg3v")
 @onready var shooter: Node2D = $Shooter
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _enter_tree() -> void:
 	add_to_group(Constants.PLAYER_GROUP)
@@ -26,6 +27,7 @@ func _physics_process(delta: float) -> void:
 #
 	## Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		audio_stream_player_2d.play()
 		velocity.y = JUMP_VELOCITY
 #
 	## Get the input direction and handle the movement/deceleration.
