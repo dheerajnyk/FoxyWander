@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name EnemyBase
 @export var speed = 30
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+const EXPLOSION = preload("uid://beoastnv48kan")
 
 const FALL_OF_Y:int = 200
 const _gravity:float =  800
@@ -20,7 +21,11 @@ func _physics_process(delta: float) -> void:
 
 func die()-> void:
 	set_physics_process(false)
-	queue_free()
+	var nod = EXPLOSION.instantiate()
+	animated_sprite_2d.visible = false
+	add_child(nod)
+
+
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	pass # Replace with function body.

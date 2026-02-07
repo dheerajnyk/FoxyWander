@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_animation_finished() -> void:
-	queue_free()
+	get_parent().queue_free()
 	pass # Replace with function body.
