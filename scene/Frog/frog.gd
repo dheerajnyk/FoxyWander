@@ -1,8 +1,8 @@
-#extends EnemyBase
-extends CharacterBody2D
+extends EnemyBase
+#extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var jump_timer: Timer = $JumpTimer
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+#@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var seen_player:bool = false
 var can_jump:bool = false
@@ -12,11 +12,11 @@ var can_jump:bool = false
 const FROG_JUMP_VELOCITY_R:Vector2 = Vector2(100,-150.0)
 const FROG_JUMP_VELOCITY_L:Vector2 = Vector2(-100,-150.0)
 
-const FALL_OF_Y:int = 200
-const _gravity:float =  800
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-var player_ref : Player
+#const FALL_OF_Y:int = 200
+#const _gravity:float =  800
+#const SPEED = 300.0
+#const JUMP_VELOCITY = -400.0
+#var player_ref : Player
 
 func _ready() -> void:
 	player_ref = get_tree().get_first_node_in_group(Constants.PLAYER_GROUP)

@@ -20,10 +20,12 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func die()-> void:
+	SIGNALHUB.oncreateObject(global_position,Constants.ObjectType.PIKUP)
 	set_physics_process(false)
 	var nod = EXPLOSION.instantiate()
 	animated_sprite_2d.visible = false
 	add_child(nod)
+	#queue_free()
 
 
 
