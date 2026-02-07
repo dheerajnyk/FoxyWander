@@ -88,8 +88,8 @@ autoplay = "FrogIdle"
 frame_progress = 0.5685084
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 8
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(1, 0)
@@ -105,6 +105,6 @@ target_position = Vector2(0, 30)
 one_shot = true
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
-[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_2visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_2visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
