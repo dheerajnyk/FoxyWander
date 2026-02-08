@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://depgaj4slkg3v"]
+[gd_scene load_steps=15 format=4 uid="uid://depgaj4slkg3v"]
 
 [ext_resource type="Script" uid="uid://qb50gr1cr2pj" path="res://scene/LevelBase/level_base.gd" id="1_2jxqq"]
 [ext_resource type="Texture2D" uid="uid://cgkkjlcgt6402" path="res://assets/tiles/Terrain (16x16).png" id="1_m7mwp"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://brug4jm00tccc" path="res://scene/ObjectMaker/object_maker.tscn" id="8_a4ygo"]
 [ext_resource type="AudioStream" uid="uid://42lqit1cgvyg" path="res://assets/sound/Flowing Rocks.ogg" id="9_try2f"]
 [ext_resource type="PackedScene" uid="uid://dlueoxtwo2o08" path="res://scene/Hud/hud.tscn" id="10_vxyuk"]
+[ext_resource type="PackedScene" uid="uid://nexl4v0h4bli" path="res://scene/ball_spikes/ball_spikes.tscn" id="11_p3h4u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85sve"]
 resource_name = "Platforms"
@@ -261,6 +262,12 @@ terrain_set_0/terrain_0/name = "grass"
 terrain_set_0/terrain_0/color = Color(4.813075e-07, 0.44630015, 0.43329194, 1)
 sources/0 = SubResource("TileSetAtlasSource_85sve")
 
+[sub_resource type="Curve2D" id="Curve2D_gxu8m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 339, -131, -88.91719, 72.897194, 88.91719, -72.897194, 337, -230, -69.421486, 31.404957, 69.421486, -31.404957, 399, -157, 0, 0, 0, 0, 486, -130, 0, 0, 0, 0, 339, -131)
+}
+point_count = 5
+
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_2jxqq")
 
@@ -294,3 +301,14 @@ parameters/looping = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("10_vxyuk")]
+
+[node name="BallSpiikesHolder" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="BallSpiikesHolder"]
+position = Vector2(33.999996, 1)
+scale = Vector2(1.0121777, 1.07)
+curve = SubResource("Curve2D_gxu8m")
+
+[node name="BallSpikes" parent="BallSpiikesHolder/Path2D" instance=ExtResource("11_p3h4u")]
+position = Vector2(339, -131)
+rotation = -2.8620074
