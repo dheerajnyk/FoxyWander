@@ -21,6 +21,7 @@ func shoot() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
 	velocity = fly_direction
 	move_and_slide()
 	shoot()
@@ -50,6 +51,8 @@ func _on_direction_timer_timeout() -> void:
 
 
 func _on_2visible_on_screen_notifier_2d_screen_entered() -> void:
+	if(animated_sprite_2d == null):
+		return
 	animated_sprite_2d.play("fly")
 	direction_timer.start()
 	flytoplayer()

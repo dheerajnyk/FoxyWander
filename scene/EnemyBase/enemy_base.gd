@@ -3,13 +3,13 @@ class_name EnemyBase
 @export var speed = 30
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 const EXPLOSION = preload("uid://beoastnv48kan")
-
+#@export var points:int =2
 const FALL_OF_Y:int = 200
 const _gravity:float =  800
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var player_ref : Player
-
+var points = 5
 func _ready() -> void:
 	player_ref = get_tree().get_first_node_in_group(Constants.PLAYER_GROUP)
 	if(player_ref==null):
@@ -24,6 +24,7 @@ func die()-> void:
 	set_physics_process(false)
 	var nod = EXPLOSION.instantiate()
 	animated_sprite_2d.visible = false
+	SIGNALHUB.onscore(points)
 	add_child(nod)
 	#queue_free()
 

@@ -1,8 +1,8 @@
 extends EnemyBase
 #extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
-@onready var jump_timer: Timer = $JumpTimer
 #@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var jump_timer: Timer = $JumpTimer
 
 var seen_player:bool = false
 var can_jump:bool = false
@@ -64,5 +64,5 @@ func _on_jump_timer_timeout() -> void:
 func _on_2visible_on_screen_notifier_2d_screen_entered() -> void:
 	if seen_player == false:
 		seen_player = true
-		start_timer()
+		#start_timer()
 	pass # Replace with function body.

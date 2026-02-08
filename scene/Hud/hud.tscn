@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlueoxtwo2o08"]
+
+[ext_resource type="FontFile" uid="uid://c608vk15frkj1" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="1_6ckh4"]
+[ext_resource type="Texture2D" uid="uid://ct22mea7rfykv" path="res://assets/items/pixel heart 2.png" id="1_bvmyh"]
+[ext_resource type="Script" uid="uid://dcb8srve4qjkp" path="res://scene/Hud/hud.gd" id="1_o7sbl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o7sbl"]
+font = ExtResource("1_6ckh4")
+font_size = 40
+font_color = Color(0.5764706, 0.6627451, 0.68235296, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o7sbl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "0000"
+label_settings = SubResource("LabelSettings_o7sbl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_bvmyh")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_bvmyh")
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_bvmyh")
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_bvmyh")
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_bvmyh")

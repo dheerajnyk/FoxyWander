@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://depgaj4slkg3v"]
+[gd_scene load_steps=13 format=4 uid="uid://depgaj4slkg3v"]
 
 [ext_resource type="Script" uid="uid://qb50gr1cr2pj" path="res://scene/LevelBase/level_base.gd" id="1_2jxqq"]
 [ext_resource type="Texture2D" uid="uid://cgkkjlcgt6402" path="res://assets/tiles/Terrain (16x16).png" id="1_m7mwp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ckgi21s02d1cb" path="res://scene/LifeTimer/life_timer.tscn" id="7_eswdw"]
 [ext_resource type="PackedScene" uid="uid://brug4jm00tccc" path="res://scene/ObjectMaker/object_maker.tscn" id="8_a4ygo"]
 [ext_resource type="AudioStream" uid="uid://42lqit1cgvyg" path="res://assets/sound/Flowing Rocks.ogg" id="9_try2f"]
+[ext_resource type="PackedScene" uid="uid://dlueoxtwo2o08" path="res://scene/Hud/hud.tscn" id="10_vxyuk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85sve"]
 resource_name = "Platforms"
@@ -289,3 +290,7 @@ stream = ExtResource("9_try2f")
 volume_db = -10.0
 autoplay = true
 parameters/looping = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("10_vxyuk")]

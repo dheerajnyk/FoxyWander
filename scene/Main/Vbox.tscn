@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bspck7h5t3kh4"]
+
+[ext_resource type="LabelSettings" uid="uid://05vsh83om4sk" path="res://scene/Main/score.tres" id="1_s8xlj"]
+[ext_resource type="Script" uid="uid://ce7es46o4is5j" path="res://scene/Main/vbox.gd" id="1_w6486"]
+[ext_resource type="LabelSettings" uid="uid://dn1hdahterhi6" path="res://scene/Main/scoreDate.tres" id="2_w6486"]
+
+[node name="VBoxContainer5" type="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+size_flags_vertical = 0
+script = ExtResource("1_w6486")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "0000"
+label_settings = ExtResource("1_s8xlj")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "12/32/2022"
+label_settings = ExtResource("2_w6486")
+horizontal_alignment = 1

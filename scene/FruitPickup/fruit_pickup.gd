@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	hide()
+	SIGNALHUB.onscore(points)
 	set_deferred("monitoring",false)
 	audio_stream_player_2d.play()
 	pass # Replace with function body.
