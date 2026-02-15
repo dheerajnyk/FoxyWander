@@ -10,6 +10,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var player_ref : Player
 var points = 5
+
 func _ready() -> void:
 	player_ref = get_tree().get_first_node_in_group(Constants.PLAYER_GROUP)
 	if(player_ref==null):
